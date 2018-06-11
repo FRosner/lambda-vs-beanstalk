@@ -1,4 +1,4 @@
-package de.frosner.elbvsl
+package de.frosner.elbvsl.elb
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
@@ -14,8 +14,8 @@ object Main extends App {
   implicit val executionContext = system.dispatcher
 
   val route =
-    path("") {
-      complete("Ok")
+    path("customers") {
+      complete(List("Frank", "Lars", "Ross", "Paul").mkString(", "))
     }
 
   val config = ConfigFactory.load()

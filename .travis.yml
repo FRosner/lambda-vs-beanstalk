@@ -1,5 +1,11 @@
 language: scala
 
 jobs:
-  script:
-    - sbt stage
+  include:
+    script:
+      - sbt lambda/compile
+
+jobs:
+  include:
+    script:
+      - sbt elb/compile
