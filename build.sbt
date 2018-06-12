@@ -20,8 +20,11 @@ lazy val lambda = (project in file("lambda"))
     addArtifact(artifact in (Compile, assembly), assembly),
     libraryDependencies ++= List(
       "com.amazonaws" % "aws-java-sdk-lambda" % "1.11.344",
-      "com.amazonaws" % "aws-lambda-java-core" % "1.2.0"
-    )
+      "com.amazonaws" % "aws-lambda-java-core" % "1.2.0",
+    ) ++ List(
+      "io.circe" %% "circe-core",
+      "io.circe" %% "circe-generic",
+      "io.circe" %% "circe-parser").map(_ % "0.9.3")
   )
 
 lazy val elb = (project in file("elb"))
