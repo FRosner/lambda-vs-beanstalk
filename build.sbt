@@ -5,7 +5,8 @@ lazy val commonSettings = Seq(
   scalaVersion := "2.12.6",
   organization := "de.frosner",
   name := "elastic-beanstalk-vs-lambda",
-  test in assembly := {}
+  test in assembly := {},
+  javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 )
 
 lazy val lambda = (project in file("lambda"))
@@ -16,7 +17,11 @@ lazy val lambda = (project in file("lambda"))
       val art = (artifact in (Compile, assembly)).value
       art.withClassifier(Some("assembly"))
     },
-    addArtifact(artifact in (Compile, assembly), assembly)
+    addArtifact(artifact in (Compile, assembly), assembly),
+    libraryDependencies ++= List(
+      "com.amazonaws" % "aws-java-sdk-lambda" % "1.11.344",
+      "com.amazonaws" % "aws-lambda-java-core" % "1.2.0"
+    )
   )
 
 lazy val elb = (project in file("elb"))

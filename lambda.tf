@@ -2,18 +2,13 @@ provider "aws" {
   region     = "eu-central-1"
 }
 
-resource "aws_s3_bucket" "bucket" {
-  bucket = "lambda-elb-test"
-  acl    = "private"
-}
-
 resource "aws_lambda_function" "lambda-elb-test-lambda" {
   function_name = "lambda-elb-test"
 
-  s3_bucket = "${aws_s3_bucket.bucket.bucket}"
+  s3_bucket = "lambda-elb-test"
   s3_key    = "lambda/de/frosner/elastic-beanstalk-vs-lambda_2.12/0.1-SNAPSHOT/elastic-beanstalk-vs-lambda_2.12-0.1-SNAPSHOT-assembly.jar"
 
-  handler = "de.frosner.elbvsl.lambda.Main::getCustomers"
+  handler = "de.frosner.elbvsl.lambda.Handler"
   runtime = "java8"
 
   role = "${aws_iam_role.lambda_exec.arn}"
