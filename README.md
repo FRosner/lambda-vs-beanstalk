@@ -4,4 +4,5 @@
 
 ## Deploy
 
-- `./terraformw apply`
+- `./terraformw lambda apply`
+- `./terraformw elb apply`

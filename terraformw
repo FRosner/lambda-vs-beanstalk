@@ -1,4 +1,6 @@
 #!/bin/bash
 
-cd terraform
-terraform $@
+set -euo pipefail
+
+cd $1/src/main/terraform
+terraform ${@:2}
