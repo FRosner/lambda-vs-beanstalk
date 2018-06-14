@@ -1,7 +1,7 @@
 resource "aws_api_gateway_integration" "lambda" {
   rest_api_id = "${aws_api_gateway_rest_api.lambda-elb-test-lambda.id}"
-  resource_id = "${aws_api_gateway_method.lambda.resource_id}"
-  http_method = "${aws_api_gateway_method.lambda.http_method}"
+  resource_id = "${aws_api_gateway_method.question.resource_id}"
+  http_method = "${aws_api_gateway_method.question.http_method}"
 
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
