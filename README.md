@@ -9,6 +9,10 @@ You can find more context and information in the respective blog posts:
 - [Deploying an HTTP API on AWS using Elastic Beanstalk
 ](https://dev.to/frosnerd/deploying-an-http-api-on-aws-using-elastic-beanstalk-5dh7)
 
+## Modules
+
+This project contains two `sbt` modules: `lambda` and `elb`. They both contain more or less the same functionality, but one is used for the Lambda deployment and the other one for deploying on Elastic Beanstalk.
+
 ## Publish
 
 - `sbt publish`
